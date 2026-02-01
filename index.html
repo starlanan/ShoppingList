@@ -29,25 +29,47 @@
             justify-content: center;
             align-items: center;
             padding: 20px;
-            transition: background 0.3s ease;
+            transition: all 0.3s ease;
         }
-        body.theme-sunset {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        body.dark-theme {
+            --bg-color: #2d3436;
+            --text-color: #dfe6e9;
+            --card-bg: rgba(45, 52, 54, 0.9);
+            --primary-color: #e17055;
+            --secondary-color: #fdcb6e;
+            --accent-color: #74b9ff;
+            --success-color: #00b894;
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
         }
-        body.theme-ocean {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        body.light-theme {
+            --bg-color: #ffffff;
+            --text-color: #2d3436;
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --primary-color: #ff6b9d;
+            --secondary-color: #feca57;
+            --accent-color: #48dbfb;
+            --success-color: #1dd1a1;
+            background: linear-gradient(135deg, #ffeaa7 0%, #dfe6e9 100%);
         }
-        body.theme-forest {
-            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        .setup-screen {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow);
+            padding: 40px;
+            width: 100%;
+            max-width: 500px;
+            animation: slideIn 0.5s ease;
         }
-        .container {
+        .main-app {
+            display: none;
             background: var(--card-bg);
             border-radius: var(--border-radius);
             backdrop-filter: blur(10px);
             box-shadow: var(--shadow);
             padding: 30px;
             width: 100%;
-            max-width: 500px;
+            max-width: 600px;
             animation: slideIn 0.5s ease;
         }
         @keyframes slideIn {
@@ -60,15 +82,108 @@
                 transform: translateY(0);
             }
         }
-        .user-setup {
+        h1 {
+            color: var(--primary-color);
             text-align: center;
             margin-bottom: 30px;
-        }
-        .user-setup h1 {
-            color: var(--primary-color);
-            margin-bottom: 20px;
             font-size: 2.5em;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        .setup-section {
+            margin-bottom: 25px;
+        }
+        .setup-label {
+            display: block;
+            margin-bottom: 10px;
+            color: var(--text-color);
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .setup-input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--secondary-color);
+            border-radius: 15px;
+            font-size: 1em;
+            font-family: inherit;
+            background: white;
+            color: var(--text-color);
+            transition: all 0.3s ease;
+        }
+        .dark-theme .setup-input {
+            background: var(--bg-color);
+        }
+        .setup-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            transform: scale(1.02);
+        }
+        .avatar-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-top: 10px;
+        }
+        .avatar-option {
+            font-size: 2.5em;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+        }
+        .avatar-option:hover {
+            transform: scale(1.2);
+        }
+        .avatar-option.selected {
+            border-color: var(--primary-color);
+            background: rgba(var(--primary-color), 0.1);
+        }
+        .theme-selector {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .theme-btn {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid var(--secondary-color);
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            background: white;
+            color: var(--text-color);
+        }
+        .dark-theme .theme-btn {
+            background: var(--bg-color);
+        }
+        .theme-btn:hover {
+            transform: scale(1.05);
+        }
+        .theme-btn.selected {
+            border-color: var(--primary-color);
+            background: var(--primary-color);
+            color: white;
+        }
+        .start-btn {
+            width: 100%;
+            padding: 15px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .start-btn:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
         }
         .user-info {
             display: flex;
@@ -87,50 +202,50 @@
             align-items: center;
             justify-content: center;
             background: white;
-            cursor: pointer;
-            transition: transform 0.3s ease;
         }
-        .avatar:hover {
-            transform: scale(1.1);
+        .dark-theme .avatar {
+            background: var(--bg-color);
         }
         .username {
             font-size: 1.2em;
             color: var(--text-color);
             font-weight: bold;
         }
-        .theme-selector {
+        .category-selector {
             display: flex;
-            justify-content: center;
             gap: 10px;
             margin-bottom: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
         }
-        .theme-btn {
+        .category-btn {
             padding: 8px 16px;
-            border: none;
+            border: 2px solid transparent;
             border-radius: 20px;
             cursor: pointer;
-            font-size: 0.9em;
             transition: all 0.3s ease;
             font-weight: bold;
+            font-size: 0.9em;
         }
-        .theme-btn.default {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        .category-btn.food {
+            background: #ff6b9d;
             color: white;
         }
-        .theme-btn.sunset {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        .category-btn.kitchen {
+            background: #4ecdc4;
             color: white;
         }
-        .theme-btn.ocean {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        .category-btn.household {
+            background: #95e1d3;
+            color: #2d3436;
+        }
+        .category-btn.personal {
+            background: #f38181;
             color: white;
         }
-        .theme-btn.forest {
-            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
-            color: white;
-        }
-        .theme-btn:hover {
-            transform: scale(1.05);
+        .category-btn.active {
+            transform: scale(1.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
         .input-section {
             display: flex;
@@ -145,6 +260,11 @@
             font-size: 1em;
             font-family: inherit;
             transition: all 0.3s ease;
+            background: white;
+            color: var(--text-color);
+        }
+        .dark-theme .grocery-input {
+            background: var(--bg-color);
         }
         .grocery-input:focus {
             outline: none;
@@ -163,25 +283,55 @@
             font-weight: bold;
         }
         .add-btn:hover {
-            background: #ff5280;
             transform: scale(1.05);
+            opacity: 0.9;
+        }
+        .categories-container {
+            max-height: 500px;
+            overflow-y: auto;
+        }
+        .category-section {
+            margin-bottom: 25px;
+        }
+        .category-header {
+            padding: 10px 15px;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            font-weight: bold;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .category-header.food {
+            background: linear-gradient(135deg, #ff6b9d, #ff8787);
+        }
+        .category-header.kitchen {
+            background: linear-gradient(135deg, #4ecdc4, #44a3aa);
+        }
+        .category-header.household {
+            background: linear-gradient(135deg, #95e1d3, #3dd5b3);
+        }
+        .category-header.personal {
+            background: linear-gradient(135deg, #f38181, #aa6b7b);
         }
         .grocery-list {
             list-style: none;
-            max-height: 400px;
-            overflow-y: auto;
         }
         .grocery-item {
             background: white;
             border-radius: 15px;
             padding: 15px;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
             gap: 15px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
             animation: fadeIn 0.5s ease;
+        }
+        .dark-theme .grocery-item {
+            background: var(--bg-color);
         }
         @keyframes fadeIn {
             from {
@@ -273,145 +423,191 @@
                 transform: translate(-50%, -50%) scale(0) rotate(0deg);
             }
         }
-        .avatar-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            z-index: 1001;
-            justify-content: center;
-            align-items: center;
-        }
-        .avatar-modal-content {
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
-            text-align: center;
-        }
-        .avatar-options {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-            margin-top: 20px;
-        }
-        .avatar-option {
-            font-size: 2.5em;
-            cursor: pointer;
-            padding: 10px;
-            border-radius: 10px;
-            transition: all 0.3s ease;
-        }
-        .avatar-option:hover {
-            background: var(--bg-color);
-            transform: scale(1.2);
-        }
-        .username-input {
-            padding: 10px;
-            border: 2px solid var(--primary-color);
-            border-radius: 10px;
-            font-size: 1.1em;
-            margin-top: 15px;
-            font-family: inherit;
-        }
-        .save-btn {
-            margin-top: 15px;
-            padding: 10px 20px;
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 1.1em;
-            font-weight: bold;
-        }
         .stats {
             margin-top: 20px;
             text-align: center;
             color: var(--text-color);
             font-size: 0.9em;
         }
+        .reset-btn {
+            padding: 8px 16px;
+            background: #6c5ce7;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.9em;
+            margin-left: 10px;
+            transition: all 0.3s ease;
+        }
+        .reset-btn:hover {
+            background: #5f4dd8;
+            transform: scale(1.05);
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="user-setup">
-            <h1>🛒 Grocery List</h1>
-            <div class="user-info">
-                <div class="avatar" id="avatarDisplay">👤</div>
-                <span class="username" id="usernameDisplay">Guest</span>
+    <div class="setup-screen" id="setupScreen">
+        <h1>🛒 Grocery List Setup</h1>
+        
+        <div class="setup-section">
+            <label class="setup-label">What's your name?</label>
+            <input type="text" class="setup-input" id="usernameInput" placeholder="Enter your name">
+        </div>
+        <div class="setup-section">
+            <label class="setup-label">Choose your avatar</label>
+            <div class="avatar-grid">
+                <div class="avatar-option" data-avatar="😊">😊</div>
+                <div class="avatar-option" data-avatar="🐻">🐻</div>
+                <div class="avatar-option" data-avatar="🦊">🦊</div>
+                <div class="avatar-option" data-avatar="🐱">🐱</div>
+                <div class="avatar-option" data-avatar="🐶">🐶</div>
+                <div class="avatar-option" data-avatar="🐰">🐰</div>
+                <div class="avatar-option" data-avatar="🐼">🐼</div>
+                <div class="avatar-option" data-avatar="🦄">🦄</div>
             </div>
+        </div>
+        <div class="setup-section">
+            <label class="setup-label">Choose theme</label>
             <div class="theme-selector">
-                <button class="theme-btn default" onclick="changeTheme('default')">Default</button>
-                <button class="theme-btn sunset" onclick="changeTheme('sunset')">Sunset</button>
-                <button class="theme-btn ocean" onclick="changeTheme('ocean')">Ocean</button>
-                <button class="theme-btn forest" onclick="changeTheme('forest')">Forest</button>
+                <button class="theme-btn" data-theme="light">☀️ Light</button>
+                <button class="theme-btn" data-theme="dark">🌙 Dark</button>
             </div>
+        </div>
+        <button class="start-btn" onclick="startApp()">Start Shopping! 🛒</button>
+    </div>
+    <div class="main-app" id="mainApp">
+        <div class="user-info">
+            <div class="avatar" id="avatarDisplay">👤</div>
+            <span class="username" id="usernameDisplay">Guest</span>
+            <button class="reset-btn" onclick="resetApp()">Reset</button>
+        </div>
+        <div class="category-selector">
+            <button class="category-btn food active" data-category="food">🍎 Food</button>
+            <button class="category-btn kitchen" data-category="kitchen">🍽️ Kitchen</button>
+            <button class="category-btn household" data-category="household">🏠 Household</button>
+            <button class="category-btn personal" data-category="personal">🧴 Personal</button>
         </div>
         <div class="input-section">
-            <input type="text" class="grocery-input" id="groceryInput" placeholder="Add yummy groceries... 🍎🥛🍞">
+            <input type="text" class="grocery-input" id="groceryInput" placeholder="Add items to your list...">
             <button class="add-btn" onclick="addGrocery()">+</button>
         </div>
-        <ul class="grocery-list" id="groceryList"></ul>
+        <div class="categories-container" id="categoriesContainer">
+            <div class="category-section" data-category="food">
+                <div class="category-header food">
+                    <span>🍎 Food</span>
+                    <span class="category-count">0 items</span>
+                </div>
+                <ul class="grocery-list"></ul>
+            </div>
+            <div class="category-section" data-category="kitchen">
+                <div class="category-header kitchen">
+                    <span>🍽️ Kitchen</span>
+                    <span class="category-count">0 items</span>
+                </div>
+                <ul class="grocery-list"></ul>
+            </div>
+            <div class="category-section" data-category="household">
+                <div class="category-header household">
+                    <span>🏠 Household</span>
+                    <span class="category-count">0 items</span>
+                </div>
+                <ul class="grocery-list"></ul>
+            </div>
+            <div class="category-section" data-category="personal">
+                <div class="category-header personal">
+                    <span>🧴 Personal</span>
+                    <span class="category-count">0 items</span>
+                </div>
+                <ul class="grocery-list"></ul>
+            </div>
+        </div>
         <div class="stats">
             <span id="itemCount">0 items</span> | <span id="completedCount">0 completed</span>
         </div>
     </div>
-    <div class="avatar-modal" id="avatarModal">
-        <div class="avatar-modal-content">
-            <h2>Choose Your Avatar</h2>
-            <input type="text" class="username-input" id="usernameInput" placeholder="Enter your name">
-            <div class="avatar-options">
-                <div class="avatar-option" onclick="selectAvatar('😊')">😊</div>
-                <div class="avatar-option" onclick="selectAvatar('🐻')">🐻</div>
-                <div class="avatar-option" onclick="selectAvatar('🦊')">🦊</div>
-                <div class="avatar-option" onclick="selectAvatar('🐱')">🐱</div>
-                <div class="avatar-option" onclick="selectAvatar('🐶')">🐶</div>
-                <div class="avatar-option" onclick="selectAvatar('🐰')">🐰</div>
-                <div class="avatar-option" onclick="selectAvatar('🐼')">🐼</div>
-                <div class="avatar-option" onclick="selectAvatar('🦄')">🦄</div>
-            </div>
-            <button class="save-btn" onclick="saveUserInfo()">Save</button>
-        </div>
-    </div>
     <script>
         let groceries = JSON.parse(localStorage.getItem('groceries')) || [];
-        let userInfo = JSON.parse(localStorage.getItem('userInfo')) || { avatar: '👤', username: 'Guest' };
-        let currentTheme = localStorage.getItem('theme') || 'default';
-        let selectedAvatar = userInfo.avatar;
+        let userInfo = JSON.parse(localStorage.getItem('userInfo')) || null;
+        let selectedAvatar = '😊';
+        let selectedTheme = 'light';
+        let selectedCategory = 'food';
         function init() {
+            if (userInfo) {
+                showMainApp();
+            } else {
+                showSetupScreen();
+            }
+        }
+        function showSetupScreen() {
+            document.getElementById('setupScreen').style.display = 'block';
+            document.getElementById('mainApp').style.display = 'none';
+            setupEventListeners();
+        }
+        function showMainApp() {
+            document.getElementById('setupScreen').style.display = 'none';
+            document.getElementById('mainApp').style.display = 'block';
             updateUserInfo();
-            changeTheme(currentTheme);
+            document.body.className = selectedTheme === 'dark' ? 'dark-theme' : 'light-theme';
             renderGroceries();
             updateStats();
+            setupMainAppListeners();
+        }
+        function setupEventListeners() {
+            // Avatar selection
+            document.querySelectorAll('.avatar-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    document.querySelectorAll('.avatar-option').forEach(o => o.classList.remove('selected'));
+                    this.classList.add('selected');
+                    selectedAvatar = this.dataset.avatar;
+                });
+            });
+            // Theme selection
+            document.querySelectorAll('.theme-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('selected'));
+                    this.classList.add('selected');
+                    selectedTheme = this.dataset.theme;
+                });
+            });
+        }
+        function setupMainAppListeners() {
+            // Category selection
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    selectedCategory = this.dataset.category;
+                });
+            });
+            // Enter key for adding items
+            document.getElementById('groceryInput').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    addGrocery();
+                }
+            });
+        }
+        function startApp() {
+            const username = document.getElementById('usernameInput').value.trim() || 'Guest';
+            
+            if (!document.querySelector('.avatar-option.selected')) {
+                selectedAvatar = '😊';
+            }
+            
+            userInfo = {
+                username: username,
+                avatar: selectedAvatar,
+                theme: selectedTheme
+            };
+            
+            localStorage.setItem('userInfo', JSON.stringify(userInfo));
+            showMainApp();
         }
         function updateUserInfo() {
             document.getElementById('avatarDisplay').textContent = userInfo.avatar;
             document.getElementById('usernameDisplay').textContent = userInfo.username;
-        }
-        document.getElementById('avatarDisplay').onclick = function() {
-            document.getElementById('avatarModal').style.display = 'flex';
-            document.getElementById('usernameInput').value = userInfo.username;
-        };
-        function selectAvatar(avatar) {
-            selectedAvatar = avatar;
-            document.querySelectorAll('.avatar-option').forEach(option => {
-                option.style.border = option.textContent === avatar ? '3px solid var(--primary-color)' : 'none';
-            });
-        }
-        function saveUserInfo() {
-            const username = document.getElementById('usernameInput').value.trim() || 'Guest';
-            userInfo = { avatar: selectedAvatar, username: username };
-            localStorage.setItem('userInfo', JSON.stringify(userInfo));
-            updateUserInfo();
-            document.getElementById('avatarModal').style.display = 'none';
-        }
-        function changeTheme(theme) {
-            document.body.className = theme === 'default' ? '' : `theme-${theme}`;
-            currentTheme = theme;
-            localStorage.setItem('theme', theme);
+            selectedTheme = userInfo.theme;
+            selectedAvatar = userInfo.avatar;
         }
         function addGrocery() {
             const input = document.getElementById('groceryInput');
@@ -421,6 +617,7 @@
                 const grocery = {
                     id: Date.now(),
                     text: item,
+                    category: selectedCategory,
                     completed: false
                 };
                 
@@ -450,23 +647,33 @@
             updateStats();
         }
         function renderGroceries() {
-            const list = document.getElementById('groceryList');
-            list.innerHTML = '';
+            const categories = ['food', 'kitchen', 'household', 'personal'];
             
-            groceries.forEach(grocery => {
-                const li = document.createElement('li');
-                li.className = `grocery-item ${grocery.completed ? 'completed' : ''}`;
-                li.innerHTML = `
-                    <div class="checkbox-wrapper">
-                        <input type="checkbox" 
-                               class="grocery-checkbox" 
-                               ${grocery.completed ? 'checked' : ''} 
-                               onchange="toggleGrocery(${grocery.id})">
-                    </div>
-                    <span class="item-text">${grocery.text}</span>
-                    <button class="delete-btn" onclick="deleteGrocery(${grocery.id})">🗑️</button>
-                `;
-                list.appendChild(li);
+            categories.forEach(category => {
+                const section = document.querySelector(`.category-section[data-category="${category}"]`);
+                const list = section.querySelector('.grocery-list');
+                const count = section.querySelector('.category-count');
+                
+                list.innerHTML = '';
+                
+                const categoryGroceries = groceries.filter(g => g.category === category);
+                count.textContent = `${categoryGroceries.length} items`;
+                
+                categoryGroceries.forEach(grocery => {
+                    const li = document.createElement('li');
+                    li.className = `grocery-item ${grocery.completed ? 'completed' : ''}`;
+                    li.innerHTML = `
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" 
+                                   class="grocery-checkbox" 
+                                   ${grocery.completed ? 'checked' : ''} 
+                                   onchange="toggleGrocery(${grocery.id})">
+                        </div>
+                        <span class="item-text">${grocery.text}</span>
+                        <button class="delete-btn" onclick="deleteGrocery(${grocery.id})">🗑️</button>
+                    `;
+                    list.appendChild(li);
+                });
             });
         }
         function showCompletedPopup() {
@@ -476,7 +683,9 @@
             document.body.appendChild(popup);
             
             setTimeout(() => {
-                document.body.removeChild(popup);
+                if (document.body.contains(popup)) {
+                    document.body.removeChild(popup);
+                }
             }, 800);
         }
         function updateStats() {
@@ -488,16 +697,15 @@
         function saveGroceries() {
             localStorage.setItem('groceries', JSON.stringify(groceries));
         }
-        document.getElementById('groceryInput').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                addGrocery();
+        function resetApp() {
+            if (confirm('Are you sure you want to reset? This will clear all your data.')) {
+                localStorage.removeItem('userInfo');
+                localStorage.removeItem('groceries');
+                userInfo = null;
+                groceries = [];
+                init();
             }
-        });
-        document.getElementById('avatarModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                this.style.display = 'none';
-            }
-        });
+        }
         init();
     </script>
 </body>

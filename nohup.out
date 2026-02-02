@@ -70724,3 +70724,23 @@ To https://github.com/starlanan/ShoppingList.git
  ! [remote rejected] main -> main (cannot lock ref 'refs/heads/main': is at 155c6f2228eff55ec1cdaca80036987ac16b12eb but expected 98bc377c82a0fb193150698f1449f4f1c06a7fd8)
 error: failed to push some refs to 'https://github.com/starlanan/ShoppingList.git'
 ✅ Synced at Mon  2 Feb 2026 22:39:00 GMT
+[main 3bf29e7] Auto-sync 2026-02-02 22:39:00
+ Committer: Nan Aye Chan Myat Mon Htoo <starlanan@Starlas.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 21 insertions(+)
+error: cannot pull with rebase: You have unstaged changes.
+error: please commit or stash them.
+To https://github.com/starlanan/ShoppingList.git
+   155c6f2..3bf29e7  main -> main
+✅ Synced at Mon  2 Feb 2026 22:39:01 GMT

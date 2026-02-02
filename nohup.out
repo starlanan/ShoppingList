@@ -60443,3 +60443,23 @@ error: please commit or stash them.
 To https://github.com/starlanan/ShoppingList.git
    3a5dbc2..62015aa  main -> main
 ✅ Synced at Mon  2 Feb 2026 12:56:10 GMT
+[main 0e76fac] Auto-sync 2026-02-02 12:56:10
+ Committer: Nan Aye Chan Myat Mon Htoo <starlanan@Starlas.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 20 insertions(+)
+error: cannot pull with rebase: You have unstaged changes.
+error: please commit or stash them.
+To https://github.com/starlanan/ShoppingList.git
+   62015aa..0e76fac  main -> main
+✅ Synced at Mon  2 Feb 2026 12:56:12 GMT
